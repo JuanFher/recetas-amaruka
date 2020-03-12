@@ -1,7 +1,7 @@
 <div id="modal_create" class="modal  bd-example-modal-lg" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-md">
         <form method="post" action="{{ route('doctor.store') }}">
-            {{ csrf_field() }}
+            @csrf
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel2">Crear Doctor</h5>
@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="listname">Número de documento</label>
-                                <input type="number" class="form-control" name="document" id="document"required placeholder="Ingrese el número de documento">
+                                <input type="text" class="form-control" name="document" id="document"required placeholder="Ingrese el número de documento">
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Laboratory;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LaboratoryController extends Controller
 {
@@ -14,18 +15,14 @@ class LaboratoryController extends Controller
      */
     public function index()
     {
-        //
+        $laboratories = Laboratory::paginate(5);
+        if (session('success_message')) {
+            Alert::success('Operacion Exitosa', session('success_message'));
+        }
+        return view('laboratories.index', compact('laboratories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -35,30 +32,35 @@ class LaboratoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'name.required' => 'Es necesario ingresar el nombre del laboratorio.',
+            
+        ];
+
+        $rules = [
+            
+            'name' => 'required'
+            
+        ];
+
+        $this->validate($request, $rules, $messages );
+        
+
+         $laboratory = new Laboratory;
+         $laboratory->name = $request->name;
+         $laboratory->description = $request->description;
+         $laboratory->address = $request->address;
+         $laboratory->phone = $request->phone;
+         $laboratory->save();
+        
+
+        if ($laboratory) {
+           
+           return back()->withSuccessMessage('Se ha actualizó con éxito');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Laboratory  $laboratory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Laboratory $laboratory)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Laboratory  $laboratory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Laboratory $laboratory)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +71,26 @@ class LaboratoryController extends Controller
      */
     public function update(Request $request, Laboratory $laboratory)
     {
-        //
+        $messages = [
+            'name.required' => 'Es necesario ingresar el nombre del laboratorio.',
+        ];
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $this->validate($request, $rules, $messages );
+
+        $laboratory->name = $request->name;
+        $laboratory->description = $request->description;
+        $laboratory->address = $request->address;
+        $laboratory->phone = $request->phone;
+        $laboratory->update();
+
+        if ($laboratory) {
+           
+           return back()->withSuccessMessage('Se ha actualizó con éxito');
+        }
     }
 
     /**

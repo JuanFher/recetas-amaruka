@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Laboratory;
 use App\Medicine;
+use App\Unit;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -14,19 +16,16 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        //
+        $laboratories = Laboratory::all();
+        $units = Unit::all();
+        $medicines = Medicine::paginate(5);
+        if (session('success_message')) {
+            Alert::success('Operacion Exitosa', session('success_message'));
+        }
+        return view('medicines.index', compact('medicines', 'laboratories', 'units'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -38,28 +37,7 @@ class MedicineController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Medicine  $medicine
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Medicine $medicine)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Medicine  $medicine
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Medicine $medicine)
-    {
-        //
-    }
-
+   
     /**
      * Update the specified resource in storage.
      *

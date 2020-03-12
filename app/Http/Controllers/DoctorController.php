@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Doctor;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DoctorController extends Controller
 {
@@ -15,7 +16,9 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = Doctor::paginate(5);
-
+        if (session('success_message')) {
+            Alert::success('Operacion Exitosa', session('success_message'));
+        }
         return view('doctors.index', compact('doctors'));
     }
 
@@ -75,7 +78,30 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
-        //
+         $messages = [
+            'name.required' => 'Es necesario ingresar el nombre del doctor.',
+            'lastname.required' => 'Es necesario ingresar el apellido del doctor.',
+            'email.required' => 'Es necesario ingresar el email',
+            'document.required' => 'Ingrese el número de documento',
+            'phone.required' => 'Ingrese el número de teléfono',
+        ];
+
+        $rules = [
+            
+            'name' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'document' => 'required',
+            'phone' => 'required',
+        ];
+        $this->validate($request, $rules, $messages );
+
+        $doctor = $doctor->update($request->all());
+
+        if ($doctor) {
+           
+           return back()->withSuccessMessage('Se ha actualizado con éxito');
+        }
     }
 
     /**

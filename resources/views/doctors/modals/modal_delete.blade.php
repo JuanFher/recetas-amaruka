@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="listname">¿Está seguro de eliminar al Doctor <strong>{{ $doctor->user['name'] }}</strong>?</label>
+                        <label for="listname">¿Está seguro de eliminar al Doctor <strong>{{ $doctor->name }} {{ $doctor->lastname }}</strong>?</label>
                     </div>
                     <div class="form-group text-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>

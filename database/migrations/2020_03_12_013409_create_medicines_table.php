@@ -19,7 +19,7 @@ class CreateMedicinesTable extends Migration
             $table->mediumText('description');
             $table->unsignedBigInteger('unit_id');
             $table->unsignedBigInteger('laboratory_id');
-            $table->unsignedInteger('continer');
+            $table->unsignedInteger('container');
             $table->string('compound');
             $table->timestamps();
             $table->foreign('unit_id')->references('id')->on('units')

@@ -17,6 +17,9 @@ class CreateLaboratoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+
             $table->timestamps();
         });
     }

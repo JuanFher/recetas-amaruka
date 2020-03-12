@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Unit;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UnitController extends Controller
 {
@@ -14,19 +15,14 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $units = Unit::paginate(5);
+        if (session('success_message')) {
+            Alert::success('Operacion Exitosa', session('success_message'));
+        }
+        return view('units.index', compact('units'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -35,31 +31,29 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'name.required' => 'Es necesario ingresar el nombre del laboratorio.',
+        ];
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $this->validate($request, $rules, $messages );
+
+         $unit = new Unit;
+         $unit->name = $request->name;
+         $unit->simbol = $request->simbol;
+         $unit->save();
+        
+
+        if ($unit) {
+           
+           return back()->withSuccessMessage('Se ha creado con éxito');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Unit  $unit
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Unit $unit)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Unit  $unit
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Unit $unit)
-    {
-        //
-    }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -69,7 +63,25 @@ class UnitController extends Controller
      */
     public function update(Request $request, Unit $unit)
     {
-        //
+        $messages = [
+            'name.required' => 'Es necesario ingresar el nombre del laboratorio.',
+        ];
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $this->validate($request, $rules, $messages );
+
+         $unit->name = $request->name;
+         $unit->simbol = $request->simbol;
+         $unit->update();
+        
+
+        if ($unit) {
+           
+           return back()->withSuccessMessage('Se ha creado con éxito');
+        }
     }
 
     /**
