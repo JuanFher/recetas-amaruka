@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function(){
+
+    Route::resource('doctor', 'DoctorController');
+    Route::resource('laboratory', 'LaboratoryController');
+    Route::resource('medicine', 'MedicineController');
+    Route::resource('patient', 'PatientController');
+    Route::resource('unit', 'UnitController');
+    Route::resource('user', 'UserController');
+});

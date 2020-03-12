@@ -1,0 +1,104 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="app-content  my-3 my-md-5">
+    <div class="side-app">
+        <div class="page-header">
+            <h4 class="page-title">Lista de Doctores</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Doctores</li>
+            </ol>
+
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                @if (session('notification'))
+                  <div class="alert alert-success">
+                      <p>{{ session('notification') }}</p>
+                  </div>
+                  @endif
+                    @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li style="list-style: none;">{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+                <div class="card">
+                    <div class="card-header ">
+                        <h3 class="card-title ">Doctores</h3>
+                        <div class="card-options">
+                            
+                                <button id="add__new__list" type="button" class="btn btn-sm btn-success " data-toggle="modal" data-target="#modal_create"><i class="fa fa-plus"></i> Añadir Nuevo</button>
+                            
+
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="CategoriesTable" class="table table-hover card-table table-striped table-vcenter table-outline text-nowrap">
+                            <thead>
+
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Número</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Teléfono</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Editar Detalles </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                @foreach($doctors as $doctor)
+                                    <tr>
+                                        <th scope="row">{{ $doctor->id }}</th>
+                                        <td>{{ $doctor->name }}</td>
+                                        @if ($doctor->type_document == 1)
+                                            <td>Cédula</td>
+                                        @endif
+                                        @if ($doctor->type_document == 2)
+                                            <td>RUC</td>
+                                        @endif
+                                        @if ($doctor->type_document == 3)
+                                            <td>Pasaporte</td>
+                                        @endif
+                                        
+                                        <td>{{ $doctor->document }}</td>
+                                        <td>{{ $doctor->address }}</td>
+                                        <td>{{ $doctor->phone }}</td>
+                                        <td>{{ $doctor->email }}</td>
+                                        @if ($doctor->status == 1)
+                                            <td><span class="tag tag-green">Activo</span></td>
+                                        @else
+                                            <td><span class="tag tag-red">Inactivo</span></td>
+                                        @endif
+                                        
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_edit{{$doctor->id}}"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal_delete{{$doctor->id}}"><i class="fa fa-trash"></i></button>
+                                            <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal_show{{$doctor->id}}"><i class="fa fa-info-circle"></i></button>
+                                            
+                                        </td>
+                                    </tr>
+                                    @include('doctors.modals.modal_delete')
+                                    @include('doctors.modals.modal_edit')
+                                    {{-- @include('doctors.modals.modal_show') --}}
+                                @endforeach
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    {{ $doctors->render() }}
+                </div>
+            </div>
+        </div>
+    </div>
+    @include('doctors.modals.modal_create')
+@endsection
