@@ -1,33 +1,91 @@
 <div id="modal_create" class="modal  bd-example-modal-lg" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-md">
-
-    <form method="post" action="{{ route('doctor.store') }}">
-                    {{ csrf_field() }}
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Crear Doctor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
-                </button>
-            </div>
-            <div class="card-body">
-                
-                    <div class="form-group">
-                        <label for="listname">Nombre de Impuesto</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Ingrese el nombre del Impuesto">
+        <form method="post" action="{{ route('doctor.store') }}">
+            {{ csrf_field() }}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Crear Doctor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">X</span>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="listname">Nombre </label>
+                                <input type="text" class="form-control" name="name" id="name" required placeholder="Ingrese el nombre del doctor">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="listname">Apellido</label>
+                                <input type="text" class="form-control" name="lastname" id="lastname" required placeholder="Ingrese el apellido del doctor">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="listname">Porcentaje</label>
-                        <input type="number" class="form-control" name="percentaje" id="percentaje" placeholder="Ingrese el valor del porcentaje">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="listname">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required placeholder="Ingrese el email">
+                            </div>
+                        </div>
                     </div>
-                    
-                                        
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="listname">Tipo de documento </label>
+                                <select name="type_document" required class="form-control custom-select">
+                                    <option value="1">Cédula</option>
+                                    <option value="2">Ruc</option>
+                                    <option value="3">Pasaporte</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="listname">Número de documento</label>
+                                <input type="number" class="form-control" name="document" id="document"required placeholder="Ingrese el número de documento">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="listname">Dirección</label>
+                                <input type="text" class="form-control" name="address" id="address" placeholder="Ingrese la dirección">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="listname">Teléfono celular </label>
+                                <input type="text" class="form-control" name="phone" id="phone" required placeholder="Ingrese el teléfono celular">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="listname">Teléfono hogar/oficina</label>
+                                <input type="text" class="form-control" name="home_phone" id="home_phone" placeholder="Ingrese el teléfono de casa">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="listname">Título</label>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Ingrese el título">
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group text-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
