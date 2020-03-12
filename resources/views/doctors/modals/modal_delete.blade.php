@@ -1,7 +1,8 @@
 <div id="modal_delete{{$doctor->id}}" class="modal  bd-example-modal-lg" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-md">
         <form method="post" action="{{ route('doctor.destroy', ['doctor' => $doctor->id]) }}">
-            {{ csrf_field() }}
+            @csrf
+            @method('DELETE')
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel2">Eliminar Doctor</h5>
