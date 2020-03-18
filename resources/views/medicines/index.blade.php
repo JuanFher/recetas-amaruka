@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-12">
            @if (session('notification'))
-                  <div class="alert alert-success">
+                  <div class="alert alert-icon alert-success" role="alert">
                       <p>{{ session('notification') }}</p>
                   </div>
                   @endif

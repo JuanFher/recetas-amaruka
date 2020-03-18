@@ -101,6 +101,10 @@ class LaboratoryController extends Controller
      */
     public function destroy(Laboratory $laboratory)
     {
-        //
+        $delete = $laboratory->delete();
+        if ($delete){
+            
+            return back()->withSuccessMessage('Se ha eliminado con éxito');
+        }
     }
 }
