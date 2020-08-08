@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group text-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        
                     </div>
                 </div>
             </div>

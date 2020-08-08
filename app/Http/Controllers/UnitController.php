@@ -80,7 +80,7 @@ class UnitController extends Controller
 
         if ($unit) {
            
-           return back()->withSuccessMessage('Se ha creado con éxito');
+           return back()->withSuccessMessage('Se ha actualizado con éxito');
         }
     }
 
@@ -92,6 +92,10 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
-        //
+        $delete = $unit->delete();
+        if ($delete){
+            
+            return back()->withSuccessMessage('Se ha eliminado con éxito');
+        }
     }
 }

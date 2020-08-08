@@ -12,7 +12,7 @@ class Unit extends Model
     ];
 
 
-    public function medicine()
+    public function medicines()
     {
         return $this->hasMany(Medicine::class);
     }

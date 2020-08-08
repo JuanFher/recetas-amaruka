@@ -60,7 +60,7 @@
                                 <td>{{ $medicine->name }}</td>
                                 <td>{{ $medicine->description }}</td>
                                 <td>{{ $medicine->compound }}</td>
-                                <td>{{ $medicine->continer }} {{ $medicine->unit['simbol'] }}</td>
+                                <td>{{ $medicine->container }} {{ $medicine->unit['simbol'] }}</td>
                                 <td>{{ $medicine->laboratory['name'] }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_edit{{$medicine->id}}"><i class="fa fa-edit"></i> Editar </button>
@@ -74,7 +74,7 @@
                             @include('medicines.modals.modal_create')
                             @include('medicines.modals.modal_edit')
                             @include('medicines.modals.modal_delete')
-                            {{-- @include('medicines.modals.modal_show') --}}
+                            @include('medicines.modals.modal_show')
                             @endforeach
                         </tbody>
                     </table>

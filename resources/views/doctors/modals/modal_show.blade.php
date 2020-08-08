@@ -36,7 +36,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="listname">Tipo de documento </label>
-                                <select name="type_document" required class="form-control custom-select">
+                                <select name="type_document" required disabled class="form-control custom-select">
                                     
                                     <option value="1">Cédula</option>
                                     <option value="2">Ruc</option>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group text-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        
                     </div>
                 </div>
             </div>

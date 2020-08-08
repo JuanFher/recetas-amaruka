@@ -37,16 +37,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="listname">Contenido</label>
-                                <input type="text" class="form-control" name="container" id="container"required placeholder="Ingrese el contenido">
+                                <input type="text" class="form-control" name="container" id="container" required placeholder="Ingrese el contenido">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="listname">Unidad de Medida </label>
-                                <select name="type_document" required class="form-control custom-select">
+                                <select name="unit_id" required class="form-control custom-select">
                                     <option value="0">-- Seleccione --</option>
                                     @foreach ($units as $unit)
-                                        <option value="{{ $unit }}">{{ $unit->name }}</option>
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
                                     
                                 </select>
@@ -57,10 +57,10 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="listname">Laboratorio </label>
-                                <select name="type_document" required class="form-control custom-select">
+                                <select name="laboratory_id" required class="form-control custom-select">
                                     <option value="0">-- Seleccione --</option>
                                     @foreach ($laboratories as $laboratory)
-                                        <option value="{{ $laboratory }}">{{ $laboratory->name }}</option>
+                                        <option value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
                                     @endforeach
                                     
                                 </select>

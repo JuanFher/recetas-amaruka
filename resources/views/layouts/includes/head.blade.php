@@ -19,4 +19,5 @@
 <link href="{{ asset('assets/plugins/scroll-bar/jquery.mCustomScrollbar.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/plugins/toggle-sidebar/sidemenu.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/plugins/iconfonts/plugin.css') }}" rel="stylesheet" />
+@include('sweetalert::alert')
 @stack('styles')

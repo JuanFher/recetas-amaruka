@@ -46,10 +46,10 @@
                             <div class="form-group">
                                 
                                 <label for="listname">Unidad de Medida </label>
-                                <select name="type_document" required class="form-control custom-select">
+                                <select name="unit_id" required class="form-control custom-select">
                                     <option value="{{ $medicine->unit['id'] }}">{{ $medicine->unit['name'] }}</option>
                                     @foreach ($units as $unit)
-                                        <option value="{{ $unit }}">{{ $unit->name }}</option>
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
                                     @endforeach
                                     
                                 </select>
@@ -60,14 +60,20 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="listname">Laboratorio</label>
-                                <input type="text" class="form-control" name="laboratory_id" value="{{ $medicine->laboratory['name'] }}" id="laboratory_id" placeholder="Ingrese la dirección">
+                                <select name="laboratory_id" required class="form-control custom-select">
+                                    <option value="{{ $medicine->laboratory['id'] }}">{{ $medicine->laboratory['name'] }}</option>
+                                    @foreach ($laboratories as $laboratory)
+                                        <option value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
+                                    @endforeach
+                                    
+                                </select>
                             </div>
                         </div>
                     </div>
                     
                     <div class="form-group text-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
                     </div>
                 </div>
             </div>
