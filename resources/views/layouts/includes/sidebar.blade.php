@@ -30,6 +30,9 @@
                 <li><a class="slide-item" href="{{ route('medicine.index')}}">Medicamentos</a></li>
             </ul>
         </li>
+        <li>
+            <a class="side-menu__item" href="{{ route('patologies.index')}}"><i class="side-menu__icon fa fa-clipboard"></i><span class="side-menu__label">Patologías</span></a>
+        </li>
         <li class="slide">
             <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-users"></i><span class="side-menu__label">Usuarios</span><i class="angle fa fa-angle-right"></i></a>
             <ul class="slide-menu">
